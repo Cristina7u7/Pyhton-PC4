@@ -1,0 +1,26 @@
+import os
+
+def leer_tabla_multiplicar(n):
+    nombre_archivo = f"tabla-{n}.txt"
+    
+    # Verificar si el archivo existe
+    if os.path.exists(nombre_archivo):
+        try:
+            # Abrimos el archivo en modo lectura
+            with open(nombre_archivo, 'r') as archivo:
+                print(f"Contenido de la tabla de multiplicar del {n}:")
+                print(archivo.read())
+        except Exception as e:
+            print(f"Error al leer el archivo: {e}")
+    else:
+        print(f"El archivo {nombre_archivo} no existe.")
+
+# Solicitar número entre 1 y 10
+try:
+    numero = int(input("Ingrese un número entre 1 y 10: "))
+    if 1 <= numero <= 10:
+        leer_tabla_multiplicar(numero)
+    else:
+        print("Por favor, ingrese un número válido entre 1 y 10.")
+except ValueError:
+    print("Error: Debe ingresar un número entero.")

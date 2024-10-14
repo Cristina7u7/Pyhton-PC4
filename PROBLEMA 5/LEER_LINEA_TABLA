@@ -1,0 +1,29 @@
+import os
+
+def leer_linea_tabla_multiplicar(n, m):
+    nombre_archivo = f"tabla-{n}.txt"
+    
+    # Verificar si el archivo existe
+    if os.path.exists(nombre_archivo):
+        try:
+            with open(nombre_archivo, 'r') as archivo:
+                lineas = archivo.readlines()
+                if 1 <= m <= 10:
+                    print(f"Línea {m}: {lineas[m-1].strip()}")
+                else:
+                    print("Por favor, ingrese un número entre 1 y 10 para la línea.")
+        except Exception as e:
+            print(f"Error al leer el archivo: {e}")
+    else:
+        print(f"El archivo {nombre_archivo} no existe.")
+
+# Solicitar número para la tabla y número de línea
+try:
+    numero_tabla = int(input("Ingrese un número entre 1 y 10 para la tabla: "))
+    if 1 <= numero_tabla <= 10:
+        numero_linea = int(input("Ingrese un número entre 1 y 10 para seleccionar la línea: "))
+        leer_linea_tabla_multiplicar(numero_tabla, numero_linea)
+    else:
+        print("Por favor, ingrese un número válido entre 1 y 10.")
+except ValueError:
+    print("Error: Debe ingresar un número entero.")
